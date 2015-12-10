@@ -11,8 +11,12 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
+springBoot {
+    mainClass = "com.thoughtworks.jimmy.SpringBootWebApplication"
+}
+
 jar {
-    baseName = 'gs-serving-web-content'
+    baseName = 'thwo-bookshelf-service'
     version =  '0.1.0'
 }
 
@@ -24,7 +28,14 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-test")
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile 'com.h2database:h2'
+    compile 'org.webjars:bootstrap:3.3.4'
+    compile 'org.webjars:jquery:2.1.4'
     testCompile("junit:junit")
 }
 
