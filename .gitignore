@@ -1,0 +1,7 @@
+.gradletasknamecache
+.gradle/
+
+idea/
+thwo-bookshelf.iml
+thwo-bookshelf.ipr
+thwo-bookshelf.iws
