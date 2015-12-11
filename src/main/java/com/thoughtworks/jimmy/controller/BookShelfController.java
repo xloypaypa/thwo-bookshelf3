@@ -50,5 +50,12 @@ public class BookShelfController {
         return "redirect:/book/" + book.getIsbn();
 
     }
-    
+
+    @RequestMapping(value = "book/edit/{isbn}", method = RequestMethod.GET)
+    public ModelAndView editBook(@PathVariable String isbn) {
+        ModelMap model = new ModelMap();
+        model.put("book", bookService.findByIsbn(isbn));
+        return new ModelAndView("newBook", model);
+    }
+
 }
