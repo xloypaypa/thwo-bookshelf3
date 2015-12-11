@@ -1,17 +1,22 @@
 package com.thoughtworks.jimmy.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class GreetingController {
 
-    @RequestMapping("/hello/{name}")
-    public String greeting(@PathVariable String name, Model model) {
-        model.addAttribute("name", name);
-        return "hello";
+    @RequestMapping(value = "/hello/{name}", method = RequestMethod.GET)
+    public ModelAndView greeting(@PathVariable String name) {
+
+        ModelMap model = new ModelMap();
+        model.put("name", name);
+        return new ModelAndView("hello", model);
+
     }
 
 }
