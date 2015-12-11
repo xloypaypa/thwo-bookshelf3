@@ -26,4 +26,8 @@ public class BookRepository {
         return BOOKS_MAP.get(isbn);
     }
 
+    public Book save(Book book) {
+        return BOOKS_MAP.put(book.getIsbn(), book);
+    }
+
 }

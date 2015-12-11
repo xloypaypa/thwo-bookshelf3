@@ -8,4 +8,5 @@ public interface BookService {
 
     Book findByIsbn(String isbn);
 
+    void create(Book book);
 }

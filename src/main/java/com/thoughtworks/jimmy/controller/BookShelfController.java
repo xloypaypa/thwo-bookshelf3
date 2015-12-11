@@ -1,5 +1,6 @@
 package com.thoughtworks.jimmy.controller;
 
+import com.thoughtworks.jimmy.model.Book;
 import com.thoughtworks.jimmy.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ public class BookShelfController {
     }
 
     @RequestMapping(value = "book/{isbn}", method = RequestMethod.GET)
-    public ModelAndView showProduct(@PathVariable String isbn) {
+    public ModelAndView showBook(@PathVariable String isbn) {
 
         ModelMap model = new ModelMap();
         model.put("book", bookService.findByIsbn(isbn));
@@ -33,4 +34,21 @@ public class BookShelfController {
 
     }
 
+    @RequestMapping(value = "book/new", method = RequestMethod.GET)
+    public ModelAndView newBook() {
+
+        ModelMap model = new ModelMap();
+        model.put("book", new Book());
+        return new ModelAndView("newBook", model);
+
+    }
+
+    @RequestMapping(value = "book", method = RequestMethod.POST)
+    public String saveBook(Book book) {
+
+        bookService.create(book);
+        return "redirect:/book/" + book.getIsbn();
+
+    }
+    
 }
