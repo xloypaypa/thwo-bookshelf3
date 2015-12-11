@@ -21,21 +21,21 @@ public class BookShelfController {
         return new ModelAndView("books", model);
     }
 
-    @RequestMapping("book/{isbn}")
+    @RequestMapping(value = "book/{isbn}", method = RequestMethod.GET)
     public ModelAndView showProduct(@PathVariable String isbn) {
         ModelMap model = new ModelMap();
         model.put("book", BookService.findOne(isbn));
         return new ModelAndView("book", model);
     }
 
-    @RequestMapping("book/edit/{isbn}")
+    @RequestMapping(value = "book/edit/{isbn}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable String isbn) {
         ModelMap model = new ModelMap();
         model.put("book", BookService.findOne(isbn));
         return new ModelAndView("newBook", model);
     }
 
-    @RequestMapping("book/new")
+    @RequestMapping(value = "book/new", method = RequestMethod.GET)
     public ModelAndView newProduct() {
         ModelMap model = new ModelMap();
         model.put("book", new Book());
