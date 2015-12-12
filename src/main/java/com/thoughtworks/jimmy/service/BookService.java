@@ -9,4 +9,8 @@ public interface BookService {
     Book findByIsbn(String isbn);
 
     void create(Book book);
+
+    void delete(String isbn);
+
+    void edit(Book book);
 }

@@ -30,4 +30,7 @@ public class BookRepository {
         return BOOKS_MAP.put(book.getIsbn(), book);
     }
 
+    public void remove(String isbn) {
+        BOOKS_MAP.remove(isbn);
+    }
 }
