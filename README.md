@@ -1,5 +1,39 @@
 # thwo-bookshelf
 
+## Database Level Workshop
+
+### Step 1:
+
+database configuration
+
+driver / url / username / password / schema
+
+create database
+
+set migration script
+
+### Step 2:
+
+migrate data.sql as example
+
+CRUD operation
+
+### Step 3:
+migration sql
+
+rollback / transaction
+
+## Extendibility
+JPA
+
+JDBC, Hibernate ...
+
+Optimize database
+
+<br>
+
+# thwo-bookshelf
+
 ## Workshop
 
 ### Step 0:
