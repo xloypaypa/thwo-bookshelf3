@@ -4,13 +4,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "WO_BOOK")
 public class Book {
     @Id
+    @Column(name = "ISBN", length = 30)
+    @NotNull
     private String isbn;
-    @Column(name = "NAME", nullable = false, length = 100)
+    @Column(name = "TITLE", nullable = false, length = 100)
     private String name;
     @Column(name = "AUTHOR", nullable = false, length = 30)
     private String author;
