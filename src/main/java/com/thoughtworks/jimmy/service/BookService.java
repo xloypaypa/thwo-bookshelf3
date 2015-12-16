@@ -13,4 +13,6 @@ public interface BookService {
     void delete(String isbn);
 
     void edit(Book book);
+
+    Iterable<Book> findByTitle(String title);
 }

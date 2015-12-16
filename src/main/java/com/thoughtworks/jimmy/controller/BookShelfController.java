@@ -1,10 +1,15 @@
 package com.thoughtworks.jimmy.controller;
 
-import com.thoughtworks.jimmy.model.Book;
-import com.thoughtworks.jimmy.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import com.thoughtworks.jimmy.model.Book;
+import com.thoughtworks.jimmy.service.BookService;
 
 @RestController
 @RequestMapping("/books")
@@ -12,6 +17,11 @@ public class BookShelfController {
 
     @Autowired
     private BookService bookService;
+
+    @RequestMapping(method = RequestMethod.GET, value = "title/{title}")
+    public Iterable<Book> queryByTitle(@PathVariable String title) {
+        return bookService.findByTitle(title);
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public Iterable<Book> query() {

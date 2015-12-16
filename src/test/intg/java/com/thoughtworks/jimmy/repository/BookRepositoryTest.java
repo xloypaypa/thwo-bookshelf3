@@ -21,7 +21,7 @@ public class BookRepositoryTest extends SpringBootWebApplicationTests {
         Book fetchBook = bookRepository.findOne(book.getIsbn());
 
         assertEquals(book.getIsbn(), fetchBook.getIsbn());
-        assertEquals(book.getName(), fetchBook.getName());
+        assertEquals(book.getTitle(), fetchBook.getTitle());
         assertEquals(book.getAuthor(), fetchBook.getAuthor());
         assertEquals(book.getPrice(), fetchBook.getPrice());
 
