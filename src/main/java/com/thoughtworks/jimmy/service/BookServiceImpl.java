@@ -1,11 +1,13 @@
 package com.thoughtworks.jimmy.service;
 
-import com.thoughtworks.jimmy.model.Book;
-import com.thoughtworks.jimmy.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.thoughtworks.jimmy.model.Book;
+import com.thoughtworks.jimmy.repository.BookRepository;
 
 @Service
+@Transactional
 public class BookServiceImpl implements BookService {
 
     private BookRepository bookRepository;
