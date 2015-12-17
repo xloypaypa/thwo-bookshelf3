@@ -2,11 +2,11 @@ package com.thoughtworks.jimmy.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import com.thoughtworks.jimmy.model.Book;
+import com.thoughtworks.jimmy.entity.BookEntity;
 
-public interface BookRepository extends CrudRepository<Book, String>{
-    @Query("SELECT b FROM Book b WHERE b.title like %?1%")
-    Iterable<Book> findByTitle(String title);
+public interface BookRepository extends CrudRepository<BookEntity, String>{
+    @Query("SELECT b FROM BookEntity b WHERE b.title like %?1%")
+    Iterable<BookEntity> findByTitle(String title);
 
-    Iterable<Book> findByTagId(Integer tagId);
+    Iterable<BookEntity> findByCategoryCode(String categoryCode);
 }

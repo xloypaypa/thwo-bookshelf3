@@ -10,11 +10,10 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import com.thoughtworks.jimmy.enumeration.Color;
-import com.thoughtworks.jimmy.model.Book;
-import com.thoughtworks.jimmy.model.SelfTag;
+import com.thoughtworks.jimmy.entity.BookEntity;
+import com.thoughtworks.jimmy.entity.CategoryEntity;
 import com.thoughtworks.jimmy.repository.BookRepository;
-import com.thoughtworks.jimmy.repository.SelfTagRepository;
+import com.thoughtworks.jimmy.repository.CategoryRepository;
 
 public class BookServiceImplTest {
 
@@ -25,7 +24,7 @@ public class BookServiceImplTest {
     private BookRepository bookRepository;
 
     @Mock
-    private SelfTagRepository selfTagRepository;
+    private CategoryRepository categoryRepository;
 
     @Before
     public void setUp() {
@@ -34,13 +33,13 @@ public class BookServiceImplTest {
 
     @Test
     public void should_find_book_by_title_when_given_title() {
-        Iterable<Book> expectedBooks = Arrays.asList(
-                new Book("12345", "Head Fist Java", "author", 55.0)
+        Iterable<BookEntity> expectedBooks = Arrays.asList(
+                new BookEntity("12345", "Head Fist Java", "author", 55.0)
         );
         String title = "Java";
         when(bookRepository.findByTitle(title)).thenReturn(expectedBooks);
 
-        Iterable<Book> books = bookService.findByTitle(title);
+        Iterable<BookEntity> books = bookService.findByTitle(title);
 
         assertEquals(expectedBooks, books);
 
@@ -48,21 +47,21 @@ public class BookServiceImplTest {
 
     @Test
     public void should_find_book_by_tag_when_given_valid_tag() {
-        Iterable<Book> expectedBooks = Arrays.asList();
-        SelfTag selfTag = new SelfTag(1, "IT", Color.PURPLE);
-        when(selfTagRepository.findByTag(selfTag.getTag())).thenReturn(selfTag);
-        when(bookRepository.findByTagId(selfTag.getId())).thenReturn(expectedBooks);
+        Iterable<BookEntity> expectedBooks = Arrays.asList();
+        CategoryEntity category = new CategoryEntity("B011", "IT", "This is a description");
+        when(categoryRepository.findByName(category.getName())).thenReturn(category);
+        when(bookRepository.findByCategoryCode(category.getCode())).thenReturn(expectedBooks);
 
-        Iterable<Book> books = bookService.findByTag(selfTag.getTag());
+        Iterable<BookEntity> books = bookService.findByCategoryName(category.getName());
 
         assertEquals(expectedBooks, books);
     }
 
     @Test(expected = RuntimeException.class)
     public void should_throw_exception_when_tag_not_found() {
-        String tag = "tag";
-        when(selfTagRepository.findByTag(tag)).thenReturn(null);
+        String categoryName = "category name";
+        when(categoryRepository.findByName(categoryName)).thenReturn(null);
 
-        bookService.findByTag(tag);
+        bookService.findByCategoryName(categoryName);
     }
 }

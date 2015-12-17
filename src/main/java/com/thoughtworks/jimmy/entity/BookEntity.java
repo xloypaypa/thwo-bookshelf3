@@ -1,4 +1,4 @@
-package com.thoughtworks.jimmy.model;
+package com.thoughtworks.jimmy.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "WO_BOOK")
-public class Book {
+public class BookEntity {
     @Id
     @Column(name = "ISBN", length = 30)
     @NotNull
@@ -23,18 +23,14 @@ public class Book {
     @Column(name = "PRICE", nullable = false)
     private Double price;
 
-//    @OneToOne
-//    @JoinColumn(name = "TAG_ID", nullable = true)
-//    private SelfTag selfTag;
+    @Column(name = "CATEGORY_CODE")
+    private String categoryCode;
 
-    @Column(name = "TAG_ID")
-    private Integer tagId;
-
-    public Book() {
+    public BookEntity() {
 
     }
 
-    public Book(String isbn, String title, String author, Double price) {
+    public BookEntity(String isbn, String title, String author, Double price) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;

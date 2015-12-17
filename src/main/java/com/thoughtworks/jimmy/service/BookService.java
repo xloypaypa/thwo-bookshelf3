@@ -1,20 +1,20 @@
 package com.thoughtworks.jimmy.service;
 
-import com.thoughtworks.jimmy.model.Book;
+import com.thoughtworks.jimmy.entity.BookEntity;
 
 public interface BookService {
 
-    Iterable<Book> findAll();
+    Iterable<BookEntity> findAll();
 
-    Book findByIsbn(String isbn);
+    BookEntity findByIsbn(String isbn);
 
-    void create(Book book);
+    void create(BookEntity book);
 
     void delete(String isbn);
 
-    void edit(Book book);
+    void edit(BookEntity book);
 
-    Iterable<Book> findByTitle(String title);
+    Iterable<BookEntity> findByTitle(String title);
 
-    Iterable<Book> findByTag(String tag);
+    Iterable<BookEntity> findByCategoryName(String name);
 }

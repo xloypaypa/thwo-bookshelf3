@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.thoughtworks.jimmy.model.Book;
+import com.thoughtworks.jimmy.entity.BookEntity;
 import com.thoughtworks.jimmy.service.BookService;
 
 @RestController
@@ -19,17 +19,17 @@ public class BookShelfController {
     private BookService bookService;
 
     @RequestMapping(method = RequestMethod.GET, value = "title/{title}")
-    public Iterable<Book> queryByTitle(@PathVariable String title) {
+    public Iterable<BookEntity> queryByTitle(@PathVariable String title) {
         return bookService.findByTitle(title);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "tag/{tag}")
-    public Iterable<Book> queryByTag(@PathVariable String tag) {
-        return bookService.findByTag(tag);
+    @RequestMapping(method = RequestMethod.GET, value = "category/{categoryName}")
+    public Iterable<BookEntity> queryByCategoryName(@PathVariable String categoryName) {
+        return bookService.findByCategoryName(categoryName);
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<Book> query() {
+    public Iterable<BookEntity> query() {
 
         return bookService.findAll();
 
@@ -37,14 +37,14 @@ public class BookShelfController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Book book) {
+    public void save(@RequestBody BookEntity book) {
 
         bookService.create(book);
 
     }
 
     @RequestMapping(value = "{isbn}", method = RequestMethod.GET)
-    public Book get(@PathVariable String isbn) {
+    public BookEntity get(@PathVariable String isbn) {
 
         return bookService.findByIsbn(isbn);
 
@@ -52,7 +52,7 @@ public class BookShelfController {
 
     @RequestMapping(value = "{isbn}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable String isbn, @RequestBody Book book) {
+    public void update(@PathVariable String isbn, @RequestBody BookEntity book) {
 
         if (isbn.equals(book.getIsbn())) {
             bookService.edit(book);

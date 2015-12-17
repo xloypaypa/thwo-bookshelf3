@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.thoughtworks.jimmy.model.Book;
-import com.thoughtworks.jimmy.model.SelfTag;
+import com.thoughtworks.jimmy.entity.BookEntity;
+import com.thoughtworks.jimmy.entity.CategoryEntity;
 import com.thoughtworks.jimmy.repository.BookRepository;
-import com.thoughtworks.jimmy.repository.SelfTagRepository;
+import com.thoughtworks.jimmy.repository.CategoryRepository;
 
 @Service
 @Transactional
@@ -18,20 +18,20 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
 
     @Autowired
-    private SelfTagRepository selfTagRepository;
+    private CategoryRepository categoryRepository;
 
     @Override
-    public Iterable<Book> findAll() {
+    public Iterable<BookEntity> findAll() {
         return bookRepository.findAll();
     }
 
     @Override
-    public Book findByIsbn(String isbn) {
+    public BookEntity findByIsbn(String isbn) {
         return bookRepository.findOne(isbn);
     }
 
     @Override
-    public void create(Book book) {
+    public void create(BookEntity book) {
         bookRepository.save(book);
     }
 
@@ -41,20 +41,20 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void edit(Book book) {
+    public void edit(BookEntity book) {
         bookRepository.save(book);
     }
 
     @Override
-    public Iterable<Book> findByTitle(String title) {
+    public Iterable<BookEntity> findByTitle(String title) {
         return bookRepository.findByTitle(title);
     }
 
     @Override
-    public Iterable<Book> findByTag(String tag) {
-        SelfTag selfTag = selfTagRepository.findByTag(tag);
-        Optional.ofNullable(selfTag).orElseThrow(() -> new RuntimeException("Tag not found !"));
-        return bookRepository.findByTagId(selfTag.getId());
+    public Iterable<BookEntity> findByCategoryName(String name) {
+        CategoryEntity category = categoryRepository.findByName(name);
+        Optional.ofNullable(category).orElseThrow(() -> new RuntimeException("Category not found !"));
+        return bookRepository.findByCategoryCode(category.getCode());
     }
 
 }
