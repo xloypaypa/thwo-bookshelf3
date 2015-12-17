@@ -23,6 +23,11 @@ public class BookShelfController {
         return bookService.findByTitle(title);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "tag/{tag}")
+    public Iterable<Book> queryByTag(@PathVariable String tag) {
+        return bookService.findByTag(tag);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public Iterable<Book> query() {
 

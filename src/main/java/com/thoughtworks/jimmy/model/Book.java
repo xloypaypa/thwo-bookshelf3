@@ -23,6 +23,13 @@ public class Book {
     @Column(name = "PRICE", nullable = false)
     private Double price;
 
+//    @OneToOne
+//    @JoinColumn(name = "TAG_ID", nullable = true)
+//    private SelfTag selfTag;
+
+    @Column(name = "TAG_ID")
+    private Integer tagId;
+
     public Book() {
 
     }

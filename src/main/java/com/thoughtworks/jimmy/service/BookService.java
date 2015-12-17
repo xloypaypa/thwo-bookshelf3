@@ -15,4 +15,6 @@ public interface BookService {
     void edit(Book book);
 
     Iterable<Book> findByTitle(String title);
+
+    Iterable<Book> findByTag(String tag);
 }

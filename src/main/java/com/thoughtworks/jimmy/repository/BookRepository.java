@@ -7,4 +7,6 @@ import com.thoughtworks.jimmy.model.Book;
 public interface BookRepository extends CrudRepository<Book, String>{
     @Query("SELECT b FROM Book b WHERE b.title like %?1%")
     Iterable<Book> findByTitle(String title);
+
+    Iterable<Book> findByTagId(Integer tagId);
 }
