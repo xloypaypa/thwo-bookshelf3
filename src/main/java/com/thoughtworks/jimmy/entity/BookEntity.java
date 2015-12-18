@@ -53,4 +53,7 @@ public class BookEntity {
         return price;
     }
 
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
+    }
 }

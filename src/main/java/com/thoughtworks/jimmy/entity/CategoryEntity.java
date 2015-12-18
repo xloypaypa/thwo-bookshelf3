@@ -19,6 +19,9 @@ public class CategoryEntity {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    public CategoryEntity() {
+    }
+
     public CategoryEntity(String code, String name, String description) {
         this.code = code;
         this.name = name;

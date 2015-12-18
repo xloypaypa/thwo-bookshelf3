@@ -18,12 +18,12 @@ public class BookShelfController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "title/{title}")
+    @RequestMapping(method = RequestMethod.GET, value = "/title/{title}")
     public Iterable<BookEntity> queryByTitle(@PathVariable String title) {
         return bookService.findByTitle(title);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "category/{categoryName}")
+    @RequestMapping(method = RequestMethod.GET, value = "/category/{categoryName}")
     public Iterable<BookEntity> queryByCategoryName(@PathVariable String categoryName) {
         return bookService.findByCategoryName(categoryName);
     }
