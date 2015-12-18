@@ -49,6 +49,17 @@ dependencies {
     testCompile("com.jayway.jsonpath:json-path:2.1.0")
 }
 
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java']
+        resources.srcDirs = ['src/main/resources']
+    }
+    test {
+        java.srcDirs = ['src/test/intg/java', 'src/test/unit/java']
+        resources.srcDirs = ['src/test/intg/resources', 'src/test/unit/resources']
+    }
+}
+
 task initSourceFolders << {
     sourceSets*.java.srcDirs*.each { it.mkdirs() }
     sourceSets*.resources.srcDirs*.each { it.mkdirs() }

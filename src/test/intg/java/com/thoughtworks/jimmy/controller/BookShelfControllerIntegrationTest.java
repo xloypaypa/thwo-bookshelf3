@@ -76,9 +76,6 @@ public class BookShelfControllerIntegrationTest extends SpringBootWebApplication
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new Gson().toJson(existedBook)))
                 .andExpect(status().isConflict());
-
-
-
     }
 
     @Test
