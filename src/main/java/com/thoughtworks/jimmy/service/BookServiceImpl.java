@@ -48,6 +48,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Iterable<BookEntity> findByTitle(String title) {
         return bookRepository.findByTitle(title);
+//        return bookRepository.findByTitleContaining(title);
     }
 
     @Override
