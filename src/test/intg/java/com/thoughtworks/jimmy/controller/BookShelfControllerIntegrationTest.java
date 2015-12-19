@@ -69,7 +69,7 @@ public class BookShelfControllerIntegrationTest extends SpringBootWebApplication
 
     @Ignore
     @Test
-    public void should_add_book_conflict_when_book_alread_exists() throws Exception {
+    public void should_add_book_conflict_when_book_already_exists() throws Exception {
         BookEntity existedBook = bookRepository.save(new BookEntity("123456", "Exist Book", "me", 34.3));
 
         mockMvc.perform(post("/books/")
@@ -110,6 +110,12 @@ public class BookShelfControllerIntegrationTest extends SpringBootWebApplication
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$.[0].title").value(book1.getTitle()))
                 .andExpect(jsonPath("$.[1].title").value(book2.getTitle()));
+
+    }
+
+    @Test
+    public void should_find_category_of_the_book_when_given_book_isbn() {
+        
 
     }
 }
