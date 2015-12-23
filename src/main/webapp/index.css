@@ -1,0 +1,29 @@
+html {
+  font-size: 62.5%;
+}
+
+.table {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.caption {
+  font-size: 3.2rem;
+  font-weight: bold;
+  margin: 1.1rem auto;
+  width: 15rem;
+}
+
+.table__row--header {
+  font-size: 1.8rem;
+  width: 14.5rem;
+}
+
+.table__row--has-book {
+  font-size: 1.6rem;
+  width: 14.5rem;
+}
+
+.table__row--no-book {
+  font-size: 1.4rem;
+}

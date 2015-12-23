@@ -1,0 +1,26 @@
+.form {
+  position: relative;
+  padding: 0 58rem;
+  margin-top: 3rem;
+}
+
+.form__element {
+  margin-bottom: .5rem;
+}
+
+.form__element--text-left {
+  font-size: 2rem;
+  text-align: left;
+}
+
+.form__element--input-right {
+  font-size: 1.4rem;
+  float: right;
+}
+
+.form__element--submit {
+  font-size: 2rem;
+  width: 13rem;
+  float: right;
+  border-radius: 4px;
+}
