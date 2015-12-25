@@ -40,8 +40,12 @@ window.onload = function () {
         deleteBtn.textContent = 'delete';
         deleteBtn.setAttribute('class', 'button');
         deleteBtn.addEventListener('click', function () {
-            httpRequest('DELETE', baseUrl + '/' + book[tableHeaderMapper.ISBN], function () {
-                deleteRow(book[tableHeaderMapper.ISBN]);
+            $.ajax({
+                url: baseUrl + '/' + book[tableHeaderMapper.ISBN],
+                type: 'DELETE',
+                success: function () {
+                    deleteRow(book[tableHeaderMapper.ISBN]);
+                }
             });
         });
         td.appendChild(deleteBtn);
@@ -53,15 +57,19 @@ window.onload = function () {
         return tr;
     };
 
-    httpRequest('GET', baseUrl, function (books) {
-        if (!books.length) {
-            booksList.appendChild(createRow());
-        } else {
-            books.forEach(function (book) {
-                var tr = createRow(book);
-                tableElements.push(tr);
-                booksList.appendChild(tr);
-            });
+    $.ajax({
+        url: baseUrl,
+        dataType: 'json',
+        success: function (books) {
+            if (!books.length) {
+                booksList.appendChild(createRow());
+            } else {
+                books.forEach(function (book) {
+                    var tr = createRow(book);
+                    tableElements.push(tr);
+                    booksList.appendChild(tr);
+                });
+            }
         }
     });
 };
