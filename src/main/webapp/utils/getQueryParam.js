@@ -6,6 +6,6 @@ var getQueryParam = function (name) {
     if (pair[0] === name) {
       result = pair[1];
     }
-  })
+  });
   return result;
 };

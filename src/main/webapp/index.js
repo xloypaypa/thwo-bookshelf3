@@ -57,15 +57,11 @@ window.onload = function () {
         url: baseUrl,
         dataType: 'json',
         success: function (books) {
-            if (!books.length) {
-                booksList.appendChild(createRow());
-            } else {
-                books.forEach(function (book) {
-                    var tr = createRow(book);
-                    tableElements.push(tr);
-                    booksList.appendChild(tr);
-                });
-            }
+            books.forEach(function (book) {
+                var tr = createRow(book);
+                tableElements.push(tr);
+                booksList.appendChild(tr);
+            });
         }
     });
 };
