@@ -1,17 +1,12 @@
 window.onload = function () {
     var isbn = getQueryParam('isbn');
     if (isbn) {
-        $.ajax({
-            url: baseUrl + '/' + isbn,
-            dataType: 'json',
-            success: function (book) {
-                for (var key in tableHeaderMapper) {
-                    document.querySelector('input[name="' + key + '"]').value = book[tableHeaderMapper[key]];
-                }
-                var isbnInput = document.querySelector('input[name="ISBN"]');
-                isbnInput.disabled = true;
-            }
-        });
+        /*用jquery 实现GET方式调用api请求
+
+
+
+
+         */
     }
 
     var form = document.querySelector('.form');
@@ -23,17 +18,13 @@ window.onload = function () {
             book[tableHeaderMapper[formElements[i].name]] = formElements[i].value;
         }
         if (isbn) {
-            $.ajax({
-                url: baseUrl + '/' + isbn,
-                type: 'PUT',
-                data: JSON.stringify(book),
-                contentType: "application/json; charset=utf-8",
-                success: function () {
-                    location.href = '/index.html';
-                }
-            });
-        } else {
+            /*用jquery 实现PUT方式调用api请求
 
+
+
+
+            */
+        } else {
             $.ajax({
                 type: "POST",
                 url: baseUrl,
