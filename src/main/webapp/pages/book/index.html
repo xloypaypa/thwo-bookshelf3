@@ -12,20 +12,64 @@
   <script src="../../config/Constants.js"></script>
 </head>
 <body>
-<script type="text/javascript">
-  var Header = document.querySelector('#Header');
-  document.body.appendChild(Header.import.querySelector('.g-head'));
-</script>
+<div class="g-head">
+  <div class="head-main">
+    <div class="head-logo">
+      <h1><a href="#">TW Bookshelf</a></h1>
+    </div>
+    <div class="head-action">
+      <a href="#" target="_blank">set default</a>|<a href="#" target="_blank">favorite</a>|<a href="#"
+                                                                                              target="_blank"
+                                                                                              class="g_ico_help">help</a>
+    </div>
+  </div>
+  <div class="head-nav">
+    <ul class="head-main">
+      <li><a title="home" href="/index.html">home</a></li>
+      <li>
+        <a href="/pages/book/index.html" title="book">book</a>
+        <ul class="navli">
+          <li><a href="#" title="option1">option1</a></li>
+          <li><a href="#" title="option2">option2</a></li>
+          <li><a href="#" title="option3">option3</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<script type="text/javascript">
-  var Form = document.querySelector('#Form');
-  document.body.appendChild(Form.import.querySelector('.form'));
-</script>
+<form class="form">
+  <div class="form__element">
+    <label class="form__element--text-left">Title:</label>
+    <input type="text" name="Title" class="form__element--input-right" maxlength="255">
+  </div>
+  <div class="form__element">
+    <label class="form__element--text-left">Author:</label>
+    <input type="text" name="Author" class="form__element--input-right" maxlength="255">
+  </div>
+  <div class="form__element">
+    <label class="form__element--text-left">ISBN:</label>
+    <input type="tel" name="ISBN" class="form__element--input-right" maxlength="17">
+  </div>
+  <div class="form__element">
+    <label class="form__element--text-left">Price($):</label>
+    <input type="tel" name="Price($)" class="form__element--input-right" maxlength="8">
+  </div>
+  <div class="form__element">
+    <button id="submit" type="submit" class="form__element--submit">Submit</button>
+  </div>
+</form>
 
-<script type="text/javascript">
-  var Footer = document.querySelector('#Footer');
-  document.body.appendChild(Footer.import.querySelector('.g-footer'));
-</script>
+<div class="g-footer">
+
+  <p class="footermenu">
+    <a href="http://thoughtworks.com/">HOME</a> | <a href="http://thoughtworks.com/">CLIENT</a> | <a
+    href="http://thoughtworks.com/">POLICY</a>
+  </p>
+  <p class="copyrighten">
+    © 2015 <a href="http://thoughtworks.com/">ThoughtWorks</a>, Inc.
+  </p>
+</div>
 
 <script src="./index.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
