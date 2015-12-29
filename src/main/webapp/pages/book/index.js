@@ -33,7 +33,6 @@ window.onload = function () {
                 }
             });
         } else {
-
             $.ajax({
                 type: "POST",
                 url: baseUrl,
