@@ -1,2 +1,2 @@
-ALTER TABLE wo_book
-ADD UNIQUE KEY uk_title_author(title, author);
+alter table wo_book
+add unique key uk_title_author(title, author);
